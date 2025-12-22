@@ -1,0 +1,44 @@
+{
+  "name": "taiwan-stock-ai-assistant",
+  "version": "5.2.0",
+  "description": "台股AI助手 - 智能台湾股票分析工具",
+  "main": "main.js",
+  "author": "Joseph AI 實驗工作室",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "build": {
+    "appId": "com.josephailab.taiwanstockai",
+    "productName": "台股AI助手",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "**/*",
+      "!**/node_modules/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icons/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.finance",
+      "icon": "build/icons/icon.icns"
+    },
+    "dmg": {
+      "background": "build/dmg-background.png",
+      "iconSize": 128
+    }
+  }
+}
