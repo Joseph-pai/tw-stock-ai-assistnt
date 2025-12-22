@@ -5,17 +5,23 @@
   "main": "main.js",
   "author": "Joseph AI 實驗工作室",
   "license": "MIT",
+  
   "scripts": {
     "start": "electron .",
-    "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "dist:win": "electron-builder --win",
     "dist:mac": "electron-builder --mac"
   },
+  
   "devDependencies": {
     "electron": "^28.0.0",
     "electron-builder": "^24.0.0"
   },
+  
+  "dependencies": {
+    "electron-log": "^5.0.0"
+  },
+  
   "build": {
     "appId": "com.josephailab.taiwanstockai",
     "productName": "台股AI助手",
@@ -23,19 +29,29 @@
       "output": "dist",
       "buildResources": "build"
     },
+    
     "files": [
-      "**/*",
-      "!**/node_modules/*"
+      "main.js",
+      "preload.js", 
+      "index.html",
+      "package.json",
+      "build/icons/icon.icns",
+      "build/icons/icon.ico",
+      "build/icons/icon.png",
+      "build/dmg-background.png"
     ],
+    
     "win": {
       "target": "nsis",
       "icon": "build/icons/icon.ico"
     },
+    
     "mac": {
       "target": "dmg",
       "category": "public.app-category.finance",
       "icon": "build/icons/icon.icns"
     },
+    
     "dmg": {
       "background": "build/dmg-background.png",
       "iconSize": 128
