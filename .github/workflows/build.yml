@@ -1,5 +1,9 @@
 name: Build Desktop App
-on: [push]
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # 允许手动触发构建
 
 jobs:
   build:
@@ -9,7 +13,8 @@ jobs:
         os: [macos-latest, windows-latest]
         
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
     
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -22,9 +27,6 @@ jobs:
       
     - name: Build application
       run: npm run dist
-      
-    - name: List build artifacts
-      run: ls -la dist/
       
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
