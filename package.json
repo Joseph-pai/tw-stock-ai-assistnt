@@ -20,24 +20,33 @@
     },
     "files": [
       "main.js",
-      "preload.js",
+      "preload.js", 
       "index.html",
       "package.json"
     ],
+    
+    // macOS 配置
     "mac": {
       "target": [
         {
           "target": "dmg",
-          "arch": ["x64", "arm64"]  
+          "arch": ["x64", "arm64"]
         },
         "zip"
       ],
       "category": "public.app-category.finance"
     },
+    
+    // Windows 配置（去掉 arch）
     "win": {
-      "target": "nsis",
-      "arch": ["x64", "ia32"]  
+      "target": "nsis"
     },
+    
+    // 架构设置在根级别
+    "x64": true,           // 启用64位构建
+    "ia32": false,         // 禁用32位（可选）
+    "arm64": true,         // 启用ARM64（如果支持）
+    
     "publish": null
   }
 }
