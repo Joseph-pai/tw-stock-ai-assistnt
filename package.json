@@ -28,7 +28,7 @@
       "target": [
         {
           "target": "dmg",
-          "arch": ["x64", "arm64"]  # 关键：同时构建Intel和Apple Silicon
+          "arch": ["x64", "arm64"]  
         },
         "zip"
       ],
@@ -36,7 +36,7 @@
     },
     "win": {
       "target": "nsis",
-      "arch": ["x64", "ia32"]  # Windows也支持32位和64位
+      "arch": ["x64", "ia32"]  
     },
     "publish": null
   }
