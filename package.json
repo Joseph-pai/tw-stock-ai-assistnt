@@ -1,10 +1,11 @@
 {
   "name": "taiwan-stock-ai-assistant",
   "version": "5.2.0",
-  "description": "台股AI助手",
+  "description": "台股AI助手 - 智能台湾股票分析工具",
   "author": "Joseph AI 實驗工作室",
   "main": "main.js",
   "scripts": {
+    "start": "electron .",
     "dist": "electron-builder --publish never"
   },
   "devDependencies": {
@@ -12,17 +13,30 @@
     "electron-builder": "^24.0.0"
   },
   "build": {
-    "appId": "com.josephailab.app",
+    "appId": "com.josephailab.taiwanstockai",
     "productName": "台股AI助手",
     "directories": {
       "output": "dist"
     },
-    "files": ["main.js", "preload.js", "index.html"],
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "package.json"
+    ],
     "mac": {
-      "target": "dmg"
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]  # 关键：同时构建Intel和Apple Silicon
+        },
+        "zip"
+      ],
+      "category": "public.app-category.finance"
     },
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "arch": ["x64", "ia32"]  # Windows也支持32位和64位
     },
     "publish": null
   }
